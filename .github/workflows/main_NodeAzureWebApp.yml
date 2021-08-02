@@ -11,7 +11,7 @@ on:
 
 jobs:
   build:
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
 
     steps:
     - uses: actions/checkout@v2
@@ -19,7 +19,7 @@ jobs:
     - name: Set up Node.js version
       uses: actions/setup-node@v1
       with:
-        node-version: '12.13.0'
+        node-version: '12.x'
 
     - name: npm install, build, and test
       run: |
@@ -34,7 +34,7 @@ jobs:
         path: .
 
   deploy:
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
     needs: build
     environment:
       name: 'production'
@@ -52,5 +52,5 @@ jobs:
       with:
         app-name: 'NodeAzureWebApp'
         slot-name: 'production'
-        publish-profile: ${{ secrets.AzureAppService_PublishProfile_ac97456f13174e3da1c225bf80871e08 }}
+        publish-profile: ${{ secrets.AzureAppService_PublishProfile_468d4f4070a646bc8c7c2f59832a7ab5 }}
         package: .
