@@ -15,7 +15,7 @@ const containerClient = blobServiceClient.getContainerClient(config.AzureContain
 
 
 app.get('/getTest', function (req, res) {
-  res.send('Hello World from Azure Test')
+  res.send('Hello World from Azure Test !!')
 });
  
 app.get('/getTextFromAzureStorage', async function (req, res) {
