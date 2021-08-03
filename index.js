@@ -38,8 +38,14 @@ app.post('/createAzureStorageFile', async function (req, res) {
 
   try
   { 
-    const content = req.body.FileConent;
-    const blobName = req.body.FileName;
+    if(!(req.body.FileConent && req.body.FileName))
+    {
+      res.send("FileConent and FileName is required in request body");
+      return;
+
+    }
+    const content = req.body.FileConent.toString() || "";
+    const blobName = req.body.FileName.toString();
     const blockBlobClient = containerClient.getBlockBlobClient(blobName);
     const uploadBlobResponse = await blockBlobClient.upload(content, content.length);
     console.log(`Upload block blob ${blobName} successfully`, uploadBlobResponse.requestId);
