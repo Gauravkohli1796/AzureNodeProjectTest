@@ -34,6 +34,24 @@ app.get('/getTextFromAzureStorage', async function (req, res) {
 });
 
 
+app.post('/createAzureStorageFile', async function (req, res) {
+
+  try
+  { 
+    const content = req.body.FileConent;
+    const blobName = req.body.FileName;
+    const blockBlobClient = containerClient.getBlockBlobClient(blobName);
+    const uploadBlobResponse = await blockBlobClient.upload(content, content.length);
+    console.log(`Upload block blob ${blobName} successfully`, uploadBlobResponse.requestId);
+    res.send(`Succesfully created blog storage with filename as ${blobName}`);
+  }
+  catch(err)
+  {
+     res.send(err.message);
+  }
+ });
+
+
 app.get('/getAzureStorageImage', function (req, res) {
     res.sendFile(path.join(__dirname+"/./HTML/index.html"));
   });
