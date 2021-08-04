@@ -5,6 +5,8 @@ const config=require("./Constants/config");
 const path=require("path");
 const Port=process.env.PORT || config.Port;
 const { BlobServiceClient } = require("@azure/storage-blob");
+var ip = require("ip");
+
 
 const connStr =config.AzureConnectionString;
 
@@ -15,7 +17,7 @@ const containerClient = blobServiceClient.getContainerClient(config.AzureContain
 
 
 app.get('/getTest', function (req, res) {
-  res.send('Hello World from Azure Test')
+  res.send(`Hello World from Azure Test from instance ip ${ip.address()}`);
 });
  
 app.get('/getTextFromAzureStorage', async function (req, res) {
