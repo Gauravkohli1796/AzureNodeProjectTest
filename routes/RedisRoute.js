@@ -12,7 +12,7 @@ let {InsertorFindInRedisCache,redis}=require("../RedisController");
 
 /**
  * @swagger
- * /Redis/getDataFromRedis:
+ * /azurePoc/Redis/getDataFromRedis:
  *   get:
  *     tags: [Redis Cache]
  *     summary: This api is used to fetch employee details corresponding to empname passed as query params in get request from redis cache.if data is not found in cache it will fetch data from db and set it to redis cache.

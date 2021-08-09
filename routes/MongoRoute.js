@@ -11,7 +11,7 @@ const Employee=require("../models/Employee");
 
 /**
  * @swagger
- * /Mongo/getMongoData:
+ * /azurePoc/Mongo/getMongoData:
  *   get:
  *     tags: [Mongo DB]
  *     summary: This api is used to fetch employee details corresponding to empname passed as query params in get request.
@@ -51,7 +51,7 @@ router.get("/getMongoData",async function(req,res)
 
 /**
  * @swagger
- * /Mongo/InsertRecordInMongoDb:
+ * /azurePoc/Mongo/InsertRecordInMongoDb:
  *   post:
  *     tags: [Mongo DB]
  *     summary: This api is used to insert new employee in db corresponding ro details passed in form data.

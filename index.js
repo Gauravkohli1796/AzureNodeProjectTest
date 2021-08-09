@@ -57,8 +57,8 @@ async function AppStart() {
         CMongoDbConn.DisconnectDb();
       });
 
-      app.use("/Mongo",MongoRoute);
-      app.use("/Redis",RedisRoute);
+      app.use("/azurePoc/Mongo",MongoRoute);
+      app.use("/azurePoc/Redis",RedisRoute);
     
 /**
  * tags:
@@ -74,7 +74,7 @@ async function AppStart() {
 
 /**
  * @swagger
- * /getTest:
+ * /azurePoc/getTest:
  *   get:
  *     tags: [Health Check API]
  *     summary: This api is used to fetch employee details corresponding to empname passed as query params in get request.
@@ -82,14 +82,14 @@ async function AppStart() {
  *       200:
  *         description: get the hello world string with server ip.
  */
-      app.get('/getTest', function (req, res) {
+      app.get('/azurePoc/getTest', function (req, res) {
         res.send(`Hello World from Azure Test from instance ip github test ${ip.address()}`);
       });
 
 
       /**
  * @swagger
- * /getTextFromAzureStorage:
+ * /azurePoc/getTextFromAzureStorage:
  *   get:
  *     tags: [Azure Storage Account API]
  *     summary: This api is used to read content from azure file.
@@ -104,7 +104,7 @@ async function AppStart() {
  *         description: get the content of file passed a query parameters.
  */
       
-      app.get('/getTextFromAzureStorage', async function (req, res) {
+      app.get('/azurePoc/getTextFromAzureStorage', async function (req, res) {
       
       try
       { 
@@ -143,7 +143,7 @@ async function AppStart() {
  */
       
       
-      app.post('/createAzureStorageFile', async function (req, res) {
+      app.post('/azurePoc/createAzureStorageFile', async function (req, res) {
       
         try
         { 
