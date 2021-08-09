@@ -4,8 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"No test specified\"",
-    "start":"nodemon index.js"
+    "test": "echo \"No test specified\""
   },
   "author": "",
   "license": "ISC",
@@ -18,7 +17,6 @@
     "ioredis": "^4.27.7",
     "ip": "^1.1.5",
     "mongoose": "^5.13.5",
-    "nodemon": "^2.0.12",
     "swagger-jsdoc": "^6.1.0",
     "swagger-ui-express": "^4.1.6"
   }
