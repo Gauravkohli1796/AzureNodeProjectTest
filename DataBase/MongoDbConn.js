@@ -1,9 +1,8 @@
-var config = require("../Constants/config");
+//var config = require("../Constants/config");
 var mongoose = require("mongoose");
 class MongoDbConn {
-  constructor(strMongoDB) {
-    this.MongoUrl = config.MongoUrl;
-    this.MongoDB = strMongoDB;
+  constructor(strMongoUrl) {
+    this.MongoUrl = strMongoUrl;
     this.connect = undefined;
   }
 }
@@ -34,9 +33,9 @@ MongoDbConn.prototype.DisconnectDb = function () {
 };
 
 class Singleton {
-  constructor(strMongoDB) {
+  constructor(strMongoUrl) {
     if (!Singleton.instance) {
-      Singleton.instance = new MongoDbConn(strMongoDB);
+      Singleton.instance = new MongoDbConn(strMongoUrl);
     }
   }
   getInstance() {

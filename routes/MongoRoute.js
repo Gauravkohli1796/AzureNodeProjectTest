@@ -3,6 +3,30 @@ const router = express.Router();
 router.use(express.json());
 const Employee=require("../models/Employee");
 
+/**
+ * tags:
+ *     name: Mongo DB,
+ *     description: All apis corresponding to mongodb routes.
+ */
+
+/**
+ * @swagger
+ * /Mongo/getMongoData:
+ *   get:
+ *     tags: [Mongo DB]
+ *     summary: This api is used to fetch employee details corresponding to empname passed as query params in get request.
+ *     parameters:
+ *       - in: query
+ *         name: EmpName
+ *         schema:
+ *            type: string
+ *            description: EmpName to be passed for fetching its corresponding details from DB.
+ *            required: true
+ *     responses:
+ *       200:
+ *         description: get the employee details as a result.
+ */
+
 router.get("/getMongoData",async function(req,res)
 {
     try
@@ -25,6 +49,37 @@ router.get("/getMongoData",async function(req,res)
 });
 
 
+/**
+ * @swagger
+ * /Mongo/InsertRecordInMongoDb:
+ *   post:
+ *     tags: [Mongo DB]
+ *     summary: This api is used to insert new employee in db corresponding ro details passed in form data.
+ *     parameters:
+ *       - in: formData
+ *         name: EmpName
+ *         type: string
+ *         description: EmpName of employee.
+ *         required: true
+ *       - in : formData
+ *         name: EmpAge
+ *         type: number
+ *         description: Age of employee.
+ *         required: true 
+ *       - in : formData
+ *         name: Gender
+ *         type: string
+ *         description: Gender of employee.
+ *         required: true 
+ *       - in : formData
+ *         name: IsPermanent
+ *         type: boolean
+ *         description: permanent/temporary employee(true for permanent).
+ *         required: true
+ *     responses:
+ *       200:
+ *         description: get employee details from db if successfully inserted with db record.
+ */
 
 router.post("/InsertRecordInMongoDb",async function(req,res)
 {

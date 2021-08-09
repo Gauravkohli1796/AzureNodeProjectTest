@@ -1,6 +1,12 @@
 const Redis = require("ioredis");
-const config=require("./Constants/config");
- var redis = new Redis(config.RedisConnectionParams);
+const AzureKeyVaultHandler=require("./AzureKeyVaultHandler");
+var CAzureKeyVaultHandler = new AzureKeyVaultHandler().getInstance();
+
+ var redis = new Redis({
+        port: parseInt(CAzureKeyVaultHandler.ConfigJson.RedisPort),   // Redis port
+        host: CAzureKeyVaultHandler.ConfigJson.RedisHost, // Redis host
+        password: CAzureKeyVaultHandler.ConfigJson.RedisPassword
+ });
 //var redis = new Redis(6380, "NodeAzureRedisCache.redis.cache.windows.net");
 
 redis.on('error', function (er) {
