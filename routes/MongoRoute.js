@@ -56,26 +56,25 @@ router.get("/getMongoData",async function(req,res)
  *     tags: [Mongo DB]
  *     summary: This api is used to insert new employee in db corresponding ro details passed in form data.
  *     parameters:
- *       - in: formData
- *         name: EmpName
- *         type: string
- *         description: EmpName of employee.
- *         required: true
- *       - in : formData
- *         name: EmpAge
- *         type: number
- *         description: Age of employee.
- *         required: true 
- *       - in : formData
- *         name: Gender
- *         type: string
- *         description: Gender of employee.
- *         required: true 
- *       - in : formData
- *         name: IsPermanent
- *         type: boolean
- *         description: permanent/temporary employee(true for permanent).
- *         required: true
+ *       - in: body
+ *         name: Employee
+ *         description: New employee create.
+ *         schema:
+ *           type: object
+ *           required:
+ *             - EmpName
+ *             - EmpAge
+ *             - Gender
+ *             - IsPermanent
+ *           properties:
+ *             EmpName:
+ *               type: string
+ *             EmpAge:
+ *               type: number
+ *             Gender:
+ *              type: string
+ *             IsPermanent:
+ *               type: string
  *     responses:
  *       200:
  *         description: get employee details from db if successfully inserted with db record.
