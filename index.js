@@ -7,8 +7,11 @@ var ip = require("ip");
 const MongoDbConn=require("./DataBase/MongoDbConn");
 const swaggerJsdoc = require('swagger-jsdoc');
 const swaggerUi = require('swagger-ui-express');
-const AzureKeyVaultHandler=require("./AzureKeyVaultHandler");
-var CAzureKeyVaultHandler = new AzureKeyVaultHandler().getInstance();
+
+
+const Port=process.env.PORT || config.Port;
+//const AzureKeyVaultHandler=require("./AzureKeyVaultHandler");
+//var CAzureKeyVaultHandler = new AzureKeyVaultHandler().getInstance();
 
  const openapiSpecification = swaggerJsdoc(config.SwaggerOptions);
  app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(openapiSpecification));
@@ -36,14 +39,17 @@ async function streamToString(readableStream) {
 
 
 async function AppStart() {
-      await CAzureKeyVaultHandler.FindAllKeys();
-      await CAzureKeyVaultHandler.GetAllConfigParams();
-      const Port=process.env.PORT || parseInt(CAzureKeyVaultHandler.ConfigJson.Port);
+      //await CAzureKeyVaultHandler.FindAllKeys();
+      //await CAzureKeyVaultHandler.GetAllConfigParams();
+      //const Port=process.env.PORT || parseInt(CAzureKeyVaultHandler.ConfigJson.Port);
       const MongoRoute=require("./routes/MongoRoute");
       const RedisRoute=require("./routes/RedisRoute");
-      const blobServiceClient = BlobServiceClient.fromConnectionString(CAzureKeyVaultHandler.ConfigJson.AzureConnectionString);
-      const containerClient = blobServiceClient.getContainerClient(CAzureKeyVaultHandler.ConfigJson.AzureContainerName);
-      var CMongoDbConn = new MongoDbConn(CAzureKeyVaultHandler.ConfigJson.MongoUrl).getInstance();
+      //const blobServiceClient = BlobServiceClient.fromConnectionString(CAzureKeyVaultHandler.ConfigJson.AzureConnectionString);
+      //const containerClient = blobServiceClient.getContainerClient(CAzureKeyVaultHandler.ConfigJson.AzureContainerName);
+      //var CMongoDbConn = new MongoDbConn(CAzureKeyVaultHandler.ConfigJson.MongoUrl).getInstance();
+      const blobServiceClient = BlobServiceClient.fromConnectionString(config.AzureConnectionString);
+      const containerClient = blobServiceClient.getContainerClient(config.AzureContainerName);
+      var CMongoDbConn = new MongoDbConn(config.MongoUrl).getInstance();
 
       try {
         //connect to mongo instance
