@@ -43,7 +43,7 @@ async function AppStart() {
       //await CAzureKeyVaultHandler.GetAllConfigParams();
       //const Port=process.env.PORT || parseInt(CAzureKeyVaultHandler.ConfigJson.Port);
       const MongoRoute=require("./routes/MongoRoute");
-      const RedisRoute=require("./routes/RedisRoute");
+      //const RedisRoute=require("./routes/RedisRoute");
       //const blobServiceClient = BlobServiceClient.fromConnectionString(CAzureKeyVaultHandler.ConfigJson.AzureConnectionString);
       //const containerClient = blobServiceClient.getContainerClient(CAzureKeyVaultHandler.ConfigJson.AzureContainerName);
       //var CMongoDbConn = new MongoDbConn(CAzureKeyVaultHandler.ConfigJson.MongoUrl).getInstance();
@@ -64,7 +64,7 @@ async function AppStart() {
       });
 
       app.use("/azurePoc/Mongo",MongoRoute);
-      app.use("/azurePoc/Redis",RedisRoute);
+      //app.use("/azurePoc/Redis",RedisRoute);
     
 /**
  * tags:
