@@ -20,10 +20,10 @@ module.exports =Object.freeze({
             ]
         },
        },
-    //    RedisConnectionParams:
-    //     {
-    //     port: 6379, // Redis port
-    //     host: "NodeAzureRedisCache.redis.cache.windows.net", // Redis host
-    //     password: "vZuP5s0aer4byYBdiIHfsVSzYTM7SJ+o6Gm7hsW5HVs="
-    //     }
+       RedisConnectionParams:
+        {
+        port: 6379, // Redis port
+        host: "NodeAzureRedisCache.redis.cache.windows.net", // Redis host
+        password: "vZuP5s0aer4byYBdiIHfsVSzYTM7SJ+o6Gm7hsW5HVs="
+        }
 });
